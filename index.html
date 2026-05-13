@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Feliz Cumpleaños Anita 💙</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Great+Vibes&family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --sky: #b8d9f0;
+  --sky-light: #dceef9;
+  --sky-pale: #eef6fc;
+  --sky-deep: #7ab8e0;
+  --white: #ffffff;
+  --cream: #fafcff;
+  --lily-blue: #5b9ec9;
+  --lily-deep: #2e6f99;
+  --rose-pink: #f4a7c0;
+  --rose-deep: #e07099;
+  --tulip: #f7c5d0;
+  --orchid: #d4a8d8;
+  --orchid-deep: #a06ab0;
+  --green: #8fbe8f;
+  --green-dark: #5a9a5a;
+  --gold: #d4b483;
+  --text-dark: #1a3a52;
+  --text-mid: #3a6080;
+  --text-light: #6a90a8;
+}
+
+html { height: 100%; }
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #c8e6f5 0%, #e8f4fb 40%, #f5e8f5 80%, #fce8f0 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'EB Garamond', Georgia, serif;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+/* ── PETALS ── */
+.petals-container { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.petal {
+  position: absolute; top: -40px; opacity: 0;
+  animation: petalFall linear infinite;
+  border-radius: 50% 50% 50% 0;
+}
+@keyframes petalFall {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10%  { opacity: 0.7; }
+  90%  { opacity: 0.3; }
+  100% { transform: translateY(110vh) rotate(540deg); opacity: 0; }
+}
+
+/* ── SCENE ── */
+.scene { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; width: 100%; }
+
+/* ── ENVELOPE ── */
+.envelope-wrapper {
+  position: relative;
+  width: min(320px, 90vw);
+  height: min(220px, 62vw);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 20px 50px rgba(90,160,210,0.35));
+  -webkit-tap-highlight-color: transparent;
+}
+.envelope-wrapper:hover  { transform: scale(1.03) translateY(-4px); }
+.envelope-wrapper:active { transform: scale(0.97); }
+
+.env-body {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, #dceef9 0%, #c8e0f0 50%, #b0cce0 100%);
+  border-radius: 4px 4px 6px 6px; overflow: hidden;
+}
+.env-body::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 40%);
+}
+.env-left {
+  position: absolute; bottom: 0; left: 0; width: 0; height: 0;
+  border-style: solid; border-width: 0 0 110px 160px;
+  border-color: transparent transparent #aacce0 transparent; opacity: 0.5;
+}
+.env-right {
+  position: absolute; bottom: 0; right: 0; width: 0; height: 0;
+  border-style: solid; border-width: 0 160px 110px 0;
+  border-color: transparent #aacce0 transparent transparent; opacity: 0.5;
+}
+.env-bottom-v {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 0;
+  border-left: 160px solid transparent;
+  border-right: 160px solid transparent;
+  border-bottom: 115px solid #b8d4e8; opacity: 0.65;
+}
+.env-border {
+  position: absolute; inset: 4px;
+  border: 1px solid rgba(255,255,255,0.7);
+  border-radius: 3px; pointer-events: none; z-index: 7;
+}
+
+/* Wax seal */
+.wax-seal {
+  position: absolute; bottom: 28px; left: 50%;
+  transform: translateX(-50%);
+  width: 52px; height: 52px;
+  background: radial-gradient(circle at 40% 35%, #7ec8f0, #3a88b8 60%, #1a5c8a);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 3px 14px rgba(58,136,184,0.5), inset 0 1px 3px rgba(255,255,255,0.3);
+  z-index: 5;
+  transition: transform 0.35s ease 0.1s, opacity 0.35s ease 0.1s;
+}
+.wax-seal::before {
+  content: ''; position: absolute; inset: 4px;
+  border-radius: 50%; border: 1px solid rgba(255,255,255,0.4);
+}
+.wax-seal-text {
+  font-family: 'Great Vibes', cursive;
+  color: #ffffff; font-size: 20px; line-height: 1;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Flap */
+.env-flap {
+  position: absolute; top: 0; left: 0; right: 0; height: 0;
+  border-left: 160px solid transparent;
+  border-right: 160px solid transparent;
+  border-top: 130px solid #cce2f2;
+  transform-origin: top center; z-index: 6;
+  transition: transform 0.95s cubic-bezier(0.4,0,0.2,1);
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+}
+
+/* Mini card rise */
+.card-rise {
+  position: absolute; top: 22px; left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  width: 78%; opacity: 0; z-index: 4;
+  transition: transform 1.1s cubic-bezier(0.2,0.8,0.3,1) 0.55s,
+              opacity 0.5s ease 0.65s;
+  pointer-events: none;
+}
+.card-rise.risen { transform: translateX(-50%) translateY(-260px); opacity: 1; }
+
+.envelope-wrapper.opening .env-flap { transform: rotateX(180deg); }
+.envelope-wrapper.opening .wax-seal { transform: translateX(-50%) scale(0); opacity: 0; }
+
+/* Tap hint */
+.tap-hint {
+  margin-top: 28px; text-align: center;
+  animation: hintPulse 2.2s ease-in-out infinite;
+  transition: opacity 0.4s ease;
+}
+.tap-hint p {
+  font-family: 'EB Garamond', serif; font-style: italic; font-size: 15px;
+  color: rgba(46,111,153,0.8); letter-spacing: 0.05em;
+}
+.tap-hint .hint-icon { font-size: 24px; display: block; margin-bottom: 5px; }
+@keyframes hintPulse {
+  0%, 100% { opacity: 0.6; transform: translateY(0); }
+  50%       { opacity: 1;   transform: translateY(-4px); }
+}
+
+/* ── OVERLAY ── */
+.invitation-overlay {
+  position: fixed; inset: 0;
+  background: rgba(180,220,245,0.25);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex; align-items: flex-start; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.65s ease;
+  overflow-y: auto; -webkit-overflow-scrolling: touch;
+  padding: 16px 12px 32px;
+}
+.invitation-overlay.visible { opacity: 1; pointer-events: all; }
+
+.card-container {
+  width: 100%; max-width: 430px; margin: auto;
+  transform: scale(0.85) translateY(40px);
+  transition: transform 0.75s cubic-bezier(0.2,0.8,0.3,1) 0.15s;
+}
+.invitation-overlay.visible .card-container { transform: scale(1) translateY(0); }
+
+/* ── CARD ── */
+.card {
+  background: var(--cream);
+  position: relative; overflow: hidden; border-radius: 4px;
+  box-shadow:
+    0 0 0 1px rgba(180,220,245,0.8),
+    0 0 0 6px rgba(184,217,240,0.2),
+    0 30px 80px rgba(90,160,210,0.3),
+    0 0 0 7px rgba(180,220,245,0.6);
+}
+
+/* Floral border SVG */
+.floral-border-top {
+  display: block; width: 100%;
+  margin-bottom: 0;
+}
+.floral-border-bottom {
+  display: block; width: 100%;
+  margin-top: 0;
+  transform: scaleY(-1);
+}
+
+.content {
+  position: relative; z-index: 2;
+  padding: 0 28px 28px;
+}
+
+/* Stagger */
+.content > * { opacity: 0; transform: translateY(14px); }
+.invitation-overlay.visible .content > * { animation: revealUp 0.6s ease forwards; }
+.invitation-overlay.visible .content > *:nth-child(1)  { animation-delay: 0.2s; }
+.invitation-overlay.visible .content > *:nth-child(2)  { animation-delay: 0.3s; }
+.invitation-overlay.visible .content > *:nth-child(3)  { animation-delay: 0.38s; }
+.invitation-overlay.visible .content > *:nth-child(4)  { animation-delay: 0.46s; }
+.invitation-overlay.visible .content > *:nth-child(5)  { animation-delay: 0.54s; }
+.invitation-overlay.visible .content > *:nth-child(6)  { animation-delay: 0.62s; }
+@keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
+
+/* Happy Birthday title */
+.hbd-label {
+  text-align: center; margin-bottom: 4px;
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(38px, 11vw, 52px);
+  color: var(--lily-blue);
+  text-shadow: 0 2px 8px rgba(91,158,201,0.2);
+  line-height: 1.1;
+}
+
+.name-label {
+  text-align: center; margin-bottom: 18px;
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(44px, 13vw, 60px);
+  color: var(--rose-deep);
+  line-height: 1;
+  text-shadow: 0 2px 8px rgba(224,112,153,0.2);
+}
+
+/* Date chip */
+.date-chip {
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; margin-bottom: 22px;
+}
+.date-chip .line {
+  height: 1px; flex: 1;
+  background: linear-gradient(90deg, transparent, var(--sky-deep));
+}
+.date-chip .line.r { background: linear-gradient(90deg, var(--sky-deep), transparent); }
+.date-chip .date-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--lily-blue);
+}
+
+/* Message area */
+.message-box {
+  background: rgba(220,238,249,0.3);
+  border: 1px solid rgba(180,216,240,0.5);
+  border-radius: 6px;
+  padding: 22px 20px;
+  position: relative;
+  margin-bottom: 10px;
+}
+.message-box::before,
+.message-box::after {
+  content: ''; position: absolute;
+  width: 14px; height: 14px;
+  border-color: var(--lily-blue); border-style: solid;
+  opacity: 0.5;
+}
+.message-box::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+.message-box::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+.message-box p {
+  font-family: 'EB Garamond', serif;
+  font-size: 15.5px; font-style: italic; line-height: 1.85;
+  color: var(--text-dark); margin-bottom: 14px; text-align: justify;
+}
+.message-box p:last-child { margin-bottom: 0; }
+
+/* Footer */
+.footer { text-align: center; padding-top: 16px; }
+.footer-hearts { color: var(--rose-pink); font-size: 16px; letter-spacing: 8px; }
+
+/* Close btn */
+.close-btn {
+  display: block; margin: 18px auto 4px;
+  background: none; border: 1px solid rgba(91,158,201,0.35);
+  color: rgba(46,111,153,0.7);
+  font-family: 'EB Garamond', serif; font-size: 13px;
+  letter-spacing: 0.2em; padding: 9px 24px;
+  cursor: pointer; border-radius: 1px;
+  transition: all 0.3s ease; opacity: 0;
+}
+.invitation-overlay.visible .close-btn { animation: revealUp 0.6s ease 1.0s forwards; }
+.close-btn:hover { background: rgba(91,158,201,0.1); color: var(--lily-blue); border-color: var(--lily-blue); }
+
+/* Music button */
+.music-btn {
+  position: fixed; bottom: 22px; right: 18px; z-index: 200;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(91,158,201,0.85);
+  border: 1px solid rgba(255,255,255,0.5);
+  font-size: 20px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(91,158,201,0.4);
+  opacity: 0; transform: scale(0);
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.2,0.8,0.3,1), background 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.music-btn.visible { opacity: 1; transform: scale(1); }
+.music-btn:hover   { background: rgba(46,111,153,0.9); }
+.music-btn.muted   { opacity: 0.5; }
+</style>
+</head>
+<body>
+
+<div class="petals-container" id="petals"></div>
+
+<!-- ENVELOPE -->
+<div class="scene">
+  <div class="envelope-wrapper" id="envelope" onclick="openEnvelope()">
+    <div class="env-body">
+      <div class="env-left"></div>
+      <div class="env-right"></div>
+      <div class="env-bottom-v"></div>
+    </div>
+    <div class="env-border"></div>
+    <div class="wax-seal"><span class="wax-seal-text">A</span></div>
+    <div class="env-flap"></div>
+    <div class="card-rise" id="cardRise">
+      <svg viewBox="0 0 200 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="200" height="56" rx="2" fill="#fafcff"/>
+        <rect x="1" y="1" width="198" height="54" rx="1.5" fill="none" stroke="#b8d9f0" stroke-width="0.8"/>
+        <text x="100" y="22" font-family="'Dancing Script', cursive" font-size="13" fill="#5b9ec9" text-anchor="middle">Feliz Cumpleaños</text>
+        <text x="100" y="42" font-family="'Great Vibes', cursive" font-size="18" fill="#e07099" text-anchor="middle">Anita</text>
+      </svg>
+    </div>
+  </div>
+  <div class="tap-hint" id="tapHint">
+    <span class="hint-icon">💙</span>
+    <p>Toca para abrir tu carta</p>
+  </div>
+</div>
+
+<!-- FULL CARD -->
+<div class="invitation-overlay" id="invitationOverlay">
+  <div class="card-container">
+    <div class="card">
+
+      <!-- Floral border top -->
+      <svg class="floral-border-top" viewBox="0 0 430 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background wash -->
+        <rect width="430" height="140" fill="#eef6fc"/>
+
+        <!-- STEMS -->
+        <path d="M215 140 C215 110 200 80 170 55" stroke="#7ab87a" stroke-width="1.5" fill="none" opacity="0.7"/>
+        <path d="M215 140 C215 110 230 80 260 55" stroke="#7ab87a" stroke-width="1.5" fill="none" opacity="0.7"/>
+        <path d="M215 140 C210 105 180 95 145 100" stroke="#7ab87a" stroke-width="1.2" fill="none" opacity="0.6"/>
+        <path d="M215 140 C220 105 250 95 285 100" stroke="#7ab87a" stroke-width="1.2" fill="none" opacity="0.6"/>
+        <path d="M215 140 C205 110 165 115 120 108" stroke="#7ab87a" stroke-width="1" fill="none" opacity="0.5"/>
+        <path d="M215 140 C225 110 265 115 310 108" stroke="#7ab87a" stroke-width="1" fill="none" opacity="0.5"/>
+        <path d="M215 140 C200 120 155 125 95 118" stroke="#7ab87a" stroke-width="0.9" fill="none" opacity="0.4"/>
+        <path d="M215 140 C230 120 275 125 335 118" stroke="#7ab87a" stroke-width="0.9" fill="none" opacity="0.4"/>
+        <path d="M215 140 C195 125 135 128 60 122" stroke="#7ab87a" stroke-width="0.8" fill="none" opacity="0.35"/>
+        <path d="M215 140 C235 125 295 128 370 122" stroke="#7ab87a" stroke-width="0.8" fill="none" opacity="0.35"/>
+
+        <!-- LEAVES -->
+        <ellipse cx="185" cy="95" rx="14" ry="6" fill="#8fbe8f" opacity="0.6" transform="rotate(-35 185 95)"/>
+        <ellipse cx="245" cy="95" rx="14" ry="6" fill="#8fbe8f" opacity="0.6" transform="rotate(35 245 95)"/>
+        <ellipse cx="155" cy="108" rx="12" ry="5" fill="#7aae7a" opacity="0.5" transform="rotate(-50 155 108)"/>
+        <ellipse cx="275" cy="108" rx="12" ry="5" fill="#7aae7a" opacity="0.5" transform="rotate(50 275 108)"/>
+        <ellipse cx="118" cy="115" rx="10" ry="4" fill="#8fbe8f" opacity="0.45" transform="rotate(-55 118 115)"/>
+        <ellipse cx="312" cy="115" rx="10" ry="4" fill="#8fbe8f" opacity="0.45" transform="rotate(55 312 115)"/>
+        <ellipse cx="80" cy="120" rx="9" ry="4" fill="#7aae7a" opacity="0.4" transform="rotate(-60 80 120)"/>
+        <ellipse cx="350" cy="120" rx="9" ry="4" fill="#7aae7a" opacity="0.4" transform="rotate(60 350 120)"/>
+
+        <!-- CENTER BLUE LILY (large, dominant) -->
+        <!-- Petals -->
+        <ellipse cx="215" cy="38" rx="10" ry="28" fill="#5b9ec9" opacity="0.85" transform="rotate(-15 215 38)"/>
+        <ellipse cx="215" cy="38" rx="10" ry="28" fill="#5b9ec9" opacity="0.85" transform="rotate(15 215 38)"/>
+        <ellipse cx="215" cy="38" rx="10" ry="28" fill="#7ab8e0" opacity="0.7" transform="rotate(45 215 38)"/>
+        <ellipse cx="215" cy="38" rx="10" ry="28" fill="#7ab8e0" opacity="0.7" transform="rotate(-45 215 38)"/>
+        <ellipse cx="215" cy="38" rx="10" ry="28" fill="#90c8e8" opacity="0.6" transform="rotate(75 215 38)"/>
+        <ellipse cx="215" cy="38" rx="10" ry="28" fill="#90c8e8" opacity="0.6" transform="rotate(-75 215 38)"/>
+        <!-- Center -->
+        <circle cx="215" cy="38" r="8" fill="#2e6f99" opacity="0.9"/>
+        <circle cx="215" cy="38" r="4" fill="#dceef9" opacity="0.8"/>
+        <!-- Stamens -->
+        <line x1="215" y1="34" x2="212" y2="28" stroke="#d4b483" stroke-width="1" opacity="0.9"/>
+        <line x1="215" y1="34" x2="218" y2="28" stroke="#d4b483" stroke-width="1" opacity="0.9"/>
+        <line x1="215" y1="34" x2="215" y2="27" stroke="#d4b483" stroke-width="1" opacity="0.9"/>
+        <circle cx="212" cy="27" r="1.5" fill="#d4b483"/>
+        <circle cx="218" cy="27" r="1.5" fill="#d4b483"/>
+        <circle cx="215" cy="26" r="1.5" fill="#d4b483"/>
+
+        <!-- LEFT BLUE LILY (medium) -->
+        <ellipse cx="155" cy="62" rx="7" ry="20" fill="#5b9ec9" opacity="0.8" transform="rotate(-20 155 62)"/>
+        <ellipse cx="155" cy="62" rx="7" ry="20" fill="#5b9ec9" opacity="0.8" transform="rotate(20 155 62)"/>
+        <ellipse cx="155" cy="62" rx="7" ry="20" fill="#7ab8e0" opacity="0.65" transform="rotate(55 155 62)"/>
+        <ellipse cx="155" cy="62" rx="7" ry="20" fill="#7ab8e0" opacity="0.65" transform="rotate(-55 155 62)"/>
+        <circle cx="155" cy="62" r="6" fill="#2e6f99" opacity="0.85"/>
+        <circle cx="155" cy="62" r="3" fill="#dceef9" opacity="0.8"/>
+        <line x1="155" y1="59" x2="152" y2="53" stroke="#d4b483" stroke-width="0.9" opacity="0.9"/>
+        <line x1="155" y1="59" x2="158" y2="53" stroke="#d4b483" stroke-width="0.9" opacity="0.9"/>
+        <circle cx="152" cy="52" r="1.2" fill="#d4b483"/>
+        <circle cx="158" cy="52" r="1.2" fill="#d4b483"/>
+
+        <!-- RIGHT BLUE LILY (medium) -->
+        <ellipse cx="275" cy="62" rx="7" ry="20" fill="#5b9ec9" opacity="0.8" transform="rotate(-20 275 62)"/>
+        <ellipse cx="275" cy="62" rx="7" ry="20" fill="#5b9ec9" opacity="0.8" transform="rotate(20 275 62)"/>
+        <ellipse cx="275" cy="62" rx="7" ry="20" fill="#7ab8e0" opacity="0.65" transform="rotate(55 275 62)"/>
+        <ellipse cx="275" cy="62" rx="7" ry="20" fill="#7ab8e0" opacity="0.65" transform="rotate(-55 275 62)"/>
+        <circle cx="275" cy="62" r="6" fill="#2e6f99" opacity="0.85"/>
+        <circle cx="275" cy="62" r="3" fill="#dceef9" opacity="0.8"/>
+        <line x1="275" y1="59" x2="272" y2="53" stroke="#d4b483" stroke-width="0.9" opacity="0.9"/>
+        <line x1="275" y1="59" x2="278" y2="53" stroke="#d4b483" stroke-width="0.9" opacity="0.9"/>
+        <circle cx="272" cy="52" r="1.2" fill="#d4b483"/>
+        <circle cx="278" cy="52" r="1.2" fill="#d4b483"/>
+
+        <!-- PINK ROSES -->
+        <circle cx="105" cy="88" r="16" fill="#f4a7c0" opacity="0.75"/>
+        <circle cx="105" cy="88" r="11" fill="#f7bdd0" opacity="0.7"/>
+        <circle cx="105" cy="88" r="7" fill="#fad0de" opacity="0.8"/>
+        <circle cx="105" cy="88" r="3.5" fill="#e07099" opacity="0.85"/>
+        <ellipse cx="97" cy="83" rx="7" ry="9" fill="#f9c8d8" opacity="0.4" transform="rotate(-20 97 83)"/>
+        <ellipse cx="113" cy="83" rx="7" ry="9" fill="#f9c8d8" opacity="0.4" transform="rotate(20 113 83)"/>
+
+        <circle cx="325" cy="88" r="16" fill="#f4a7c0" opacity="0.75"/>
+        <circle cx="325" cy="88" r="11" fill="#f7bdd0" opacity="0.7"/>
+        <circle cx="325" cy="88" r="7" fill="#fad0de" opacity="0.8"/>
+        <circle cx="325" cy="88" r="3.5" fill="#e07099" opacity="0.85"/>
+        <ellipse cx="317" cy="83" rx="7" ry="9" fill="#f9c8d8" opacity="0.4" transform="rotate(-20 317 83)"/>
+        <ellipse cx="333" cy="83" rx="7" ry="9" fill="#f9c8d8" opacity="0.4" transform="rotate(20 333 83)"/>
+
+        <!-- SMALL ROSES sides -->
+        <circle cx="58" cy="105" r="11" fill="#f4a7c0" opacity="0.65"/>
+        <circle cx="58" cy="105" r="7" fill="#f7bdd0" opacity="0.7"/>
+        <circle cx="58" cy="105" r="3.5" fill="#e07099" opacity="0.8"/>
+        <circle cx="372" cy="105" r="11" fill="#f4a7c0" opacity="0.65"/>
+        <circle cx="372" cy="105" r="7" fill="#f7bdd0" opacity="0.7"/>
+        <circle cx="372" cy="105" r="3.5" fill="#e07099" opacity="0.8"/>
+
+        <!-- TULIPS -->
+        <ellipse cx="192" cy="75" rx="6" ry="14" fill="#f7c5d0" opacity="0.75" transform="rotate(-10 192 75)"/>
+        <ellipse cx="197" cy="73" rx="5" ry="12" fill="#fad5e0" opacity="0.65" transform="rotate(5 197 73)"/>
+        <ellipse cx="187" cy="76" rx="5" ry="11" fill="#f4b8c8" opacity="0.6" transform="rotate(-20 187 76)"/>
+
+        <ellipse cx="238" cy="75" rx="6" ry="14" fill="#f7c5d0" opacity="0.75" transform="rotate(10 238 75)"/>
+        <ellipse cx="233" cy="73" rx="5" ry="12" fill="#fad5e0" opacity="0.65" transform="rotate(-5 233 73)"/>
+        <ellipse cx="243" cy="76" rx="5" ry="11" fill="#f4b8c8" opacity="0.6" transform="rotate(20 243 76)"/>
+
+        <!-- ORCHIDS -->
+        <ellipse cx="130" cy="98" rx="8" ry="5" fill="#d4a8d8" opacity="0.7" transform="rotate(-30 130 98)"/>
+        <ellipse cx="130" cy="98" rx="8" ry="5" fill="#d4a8d8" opacity="0.7" transform="rotate(30 130 98)"/>
+        <ellipse cx="130" cy="98" rx="5" ry="8" fill="#e0bce4" opacity="0.6"/>
+        <circle cx="130" cy="98" r="3" fill="#a06ab0" opacity="0.8"/>
+
+        <ellipse cx="300" cy="98" rx="8" ry="5" fill="#d4a8d8" opacity="0.7" transform="rotate(-30 300 98)"/>
+        <ellipse cx="300" cy="98" rx="8" ry="5" fill="#d4a8d8" opacity="0.7" transform="rotate(30 300 98)"/>
+        <ellipse cx="300" cy="98" rx="5" ry="8" fill="#e0bce4" opacity="0.6"/>
+        <circle cx="300" cy="98" r="3" fill="#a06ab0" opacity="0.8"/>
+
+        <!-- SMALL BLUE LILY BUDS far sides -->
+        <ellipse cx="22" cy="118" rx="5" ry="13" fill="#7ab8e0" opacity="0.65" transform="rotate(-30 22 118)"/>
+        <ellipse cx="22" cy="118" rx="5" ry="13" fill="#5b9ec9" opacity="0.55" transform="rotate(10 22 118)"/>
+        <circle cx="22" cy="118" r="4" fill="#2e6f99" opacity="0.7"/>
+
+        <ellipse cx="408" cy="118" rx="5" ry="13" fill="#7ab8e0" opacity="0.65" transform="rotate(30 408 118)"/>
+        <ellipse cx="408" cy="118" rx="5" ry="13" fill="#5b9ec9" opacity="0.55" transform="rotate(-10 408 118)"/>
+        <circle cx="408" cy="118" r="4" fill="#2e6f99" opacity="0.7"/>
+      </svg>
+
+      <div class="content">
+
+        <!-- Happy Birthday -->
+        <div style="opacity:0;transform:translateY(14px)" class="hbd-anim">
+          <p class="hbd-label">Feliz Cumpleaños</p>
+          <p class="name-label">mi amor</p>
+        </div>
+
+        <!-- Date -->
+        <div class="date-chip">
+          <div class="line"></div>
+          <span class="date-text">14 · Mayo · 2026</span>
+          <div class="line r"></div>
+        </div>
+
+        <!-- Message -->
+        <div class="message-box">
+          <p>Hoy no solo cumple años el amor de mi vida, la persona que me hace muy feliz cada uno de mis días. Hoy cumple años la niña de mis ojos, esa mujer que se ha vuelto la persona más importante que tengo en la vida.</p>
+
+          <p>Es un año más que cumples, un año más donde sé que vas a ir avanzando de a pocos, porque sé que eres muy maravillosa y que te mereces siempre lo mejor — hoy, mañana y siempre. Nunca dudes de ti, porque tú eres mi niña especial, aquella con esos ojitos hermosos y ese cuerpo que amo, con una personalidad muy única. Eres simplemente tú, siendo la persona más genuina que conozco, y nunca me cansaré de ello.</p>
+
+          <p>Esa mujer que aunque tenga miedos, complicaciones y días malos, siempre — lo diré y nunca lo dudaré — eres una mujer muy fuerte. Aquella fortaleza que a veces dudas tener, pero que sin dudar sé que la tienes, incluso muchas veces te puede sobrar.</p>
+
+          <p>Sé también que el destino te tiene cosas muy buenas que sí, pueden hacerse esperar o sonar complicadas, pero que llegarán porque es lo que mereces, y vas a luchar cada día por eso. Con ese corazón tan noble, tierno, amoroso y sobre todo muy soñador, sé que nadie te va a parar cuando las oportunidades lleguen. Nunca te rindas.</p>
+
+          <p>Gracias por hacerme parte de cada uno de tus días, viéndote y sobre todo acompañándote para ser, juntos, un futuro. Te amo mucho, mi amor. 🩷</p>
+        </div>
+
+        <div class="footer">
+          <p class="footer-hearts">🩷 🌸 🩷</p>
+        </div>
+
+      </div>
+
+      <!-- Floral border bottom -->
+      <svg class="floral-border-bottom" viewBox="0 0 430 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="430" height="140" fill="#eef6fc"/>
+        <path d="M215 140 C215 110 200 80 170 55" stroke="#7ab87a" stroke-width="1.5" fill="none" opacity="0.7"/>
+        <path d="M215 140 C215 110 230 80 260 55" stroke="#7ab87a" stroke-width="1.5" fill="none" opacity="0.7"/>
+        <path d="M215 140 C210 105 180 95 145 100" stroke="#7ab87a" stroke-width="1.2" fill="none" opacity="0.6"/>
+        <path d="M215 140 C220 105 250 95 285 100" stroke="#7ab87a" stroke-width="1.2" fill="none" opacity="0.6"/>
+        <path d="M215 140 C205 110 165 115 120 108" stroke="#7ab87a" stroke-width="1" fill="none" opacity="0.5"/>
+        <path d="M215 140 C225 110 265 115 310 108" stroke="#7ab87a" stroke-width="1" fill="none" opacity="0.5"/>
+        <path d="M215 140 C200 120 155 125 95 118" stroke="#7ab87a" stroke-width="0.9" fill="none" opacity="0.4"/>
+        <path d="M215 140 C230 120 275 125 335 118" stroke="#7ab87a" stroke-width="0.9" fill="none" opacity="0.4"/>
+        <ellipse cx="185" cy="95" rx="14" ry="6" fill="#8fbe8f" opacity="0.6" transform="rotate(-35 185 95)"/>
+        <ellipse cx="245" cy="95" rx="14" ry="6" fill="#8fbe8f" opacity="0.6" transform="rotate(35 245 95)"/>
+        <ellipse cx="155" cy="108" rx="12" ry="5" fill="#7aae7a" opacity="0.5" transform="rotate(-50 155 108)"/>
+        <ellipse cx="275" cy="108" rx="12" ry="5" fill="#7aae7a" opacity="0.5" transform="rotate(50 275 108)"/>
+        <ellipse cx="215" cy="38" rx="10" ry="28" fill="#5b9ec9" opacity="0.85" transform="rotate(-15 215 38)"/>
+        <ellipse cx="215" cy="38" rx="10" ry="28" fill="#5b9ec9" opacity="0.85" transform="rotate(15 215 38)"/>
+        <ellipse cx="215" cy="38" rx="10" ry="28" fill="#7ab8e0" opacity="0.7" transform="rotate(45 215 38)"/>
+        <ellipse cx="215" cy="38" rx="10" ry="28" fill="#7ab8e0" opacity="0.7" transform="rotate(-45 215 38)"/>
+        <circle cx="215" cy="38" r="8" fill="#2e6f99" opacity="0.9"/>
+        <circle cx="215" cy="38" r="4" fill="#dceef9" opacity="0.8"/>
+        <ellipse cx="155" cy="62" rx="7" ry="20" fill="#5b9ec9" opacity="0.8" transform="rotate(-20 155 62)"/>
+        <ellipse cx="155" cy="62" rx="7" ry="20" fill="#5b9ec9" opacity="0.8" transform="rotate(20 155 62)"/>
+        <circle cx="155" cy="62" r="6" fill="#2e6f99" opacity="0.85"/>
+        <ellipse cx="275" cy="62" rx="7" ry="20" fill="#5b9ec9" opacity="0.8" transform="rotate(-20 275 62)"/>
+        <ellipse cx="275" cy="62" rx="7" ry="20" fill="#5b9ec9" opacity="0.8" transform="rotate(20 275 62)"/>
+        <circle cx="275" cy="62" r="6" fill="#2e6f99" opacity="0.85"/>
+        <circle cx="105" cy="88" r="14" fill="#f4a7c0" opacity="0.7"/>
+        <circle cx="105" cy="88" r="9" fill="#f7bdd0" opacity="0.7"/>
+        <circle cx="105" cy="88" r="4" fill="#e07099" opacity="0.85"/>
+        <circle cx="325" cy="88" r="14" fill="#f4a7c0" opacity="0.7"/>
+        <circle cx="325" cy="88" r="9" fill="#f7bdd0" opacity="0.7"/>
+        <circle cx="325" cy="88" r="4" fill="#e07099" opacity="0.85"/>
+        <ellipse cx="130" cy="100" rx="8" ry="5" fill="#d4a8d8" opacity="0.65" transform="rotate(-30 130 100)"/>
+        <ellipse cx="130" cy="100" rx="8" ry="5" fill="#d4a8d8" opacity="0.65" transform="rotate(30 130 100)"/>
+        <circle cx="130" cy="100" r="3" fill="#a06ab0" opacity="0.8"/>
+        <ellipse cx="300" cy="100" rx="8" ry="5" fill="#d4a8d8" opacity="0.65" transform="rotate(-30 300 100)"/>
+        <ellipse cx="300" cy="100" rx="8" ry="5" fill="#d4a8d8" opacity="0.65" transform="rotate(30 300 100)"/>
+        <circle cx="300" cy="100" r="3" fill="#a06ab0" opacity="0.8"/>
+        <circle cx="60" cy="110" r="10" fill="#f4a7c0" opacity="0.6"/>
+        <circle cx="60" cy="110" r="6" fill="#f7bdd0" opacity="0.65"/>
+        <circle cx="370" cy="110" r="10" fill="#f4a7c0" opacity="0.6"/>
+        <circle cx="370" cy="110" r="6" fill="#f7bdd0" opacity="0.65"/>
+      </svg>
+
+    </div>
+    <button class="close-btn" onclick="closeInvitation()">✕ &nbsp; Cerrar</button>
+  </div>
+</div>
+
+<!-- Music mute button -->
+<button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Música">🎵</button>
+
+<audio id="bgMusic" loop>
+  <source src="sinos.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+document.addEventListener("click", () => {
+  const music = document.getElementById("bgMusic");
+  music.addEventListener("loadedmetadata", () => {
+    music.currentTime = 8;
+    music.play();
+  });
+  music.load();
+  setTimeout(() => {
+    document.getElementById('musicBtn').classList.add('visible');
+  }, 1500);
+}, { once: true });
+</script>
+
+<script>
+  let isMuted = false;
+  function toggleMusic() {
+    const music = document.getElementById('bgMusic');
+    const btn   = document.getElementById('musicBtn');
+    isMuted = !isMuted;
+    music.muted = isMuted;
+    btn.textContent = isMuted ? '🔇' : '🎵';
+    btn.classList.toggle('muted', isMuted);
+  }
+</script>
+
+<script>
+  const petalColors = ['#b8d9f0','#f4a7c0','#d4a8d8','#f7c5d0','#7ab8e0','#fad0de','#c8e8f8'];
+  const pc = document.getElementById('petals');
+  for (let i = 0; i < 26; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    const sz = 7 + Math.random() * 10;
+    p.style.cssText = `left:${Math.random()*100}%;background:${petalColors[Math.floor(Math.random()*petalColors.length)]};width:${sz}px;height:${sz*1.4}px;border-radius:${Math.random()>.5?'50% 50% 50% 0':'50% 0 50% 50%'};animation-duration:${7+Math.random()*9}s;animation-delay:${Math.random()*14}s;`;
+    pc.appendChild(p);
+  }
+
+  let isOpen = false;
+
+  function openEnvelope() {
+    if (isOpen) return;
+    isOpen = true;
+    const hint = document.getElementById('tapHint');
+    hint.style.opacity = '0'; hint.style.pointerEvents = 'none';
+    document.getElementById('envelope').classList.add('opening');
+    setTimeout(() => document.getElementById('cardRise').classList.add('risen'), 480);
+    setTimeout(() => {
+      document.getElementById('invitationOverlay').classList.add('visible');
+      document.body.style.overflow = 'hidden';
+    }, 1250);
+  }
+
+  function closeInvitation() {
+    const overlay = document.getElementById('invitationOverlay');
+    overlay.classList.remove('visible');
+    document.body.style.overflow = '';
+    setTimeout(() => {
+      document.getElementById('envelope').classList.remove('opening');
+      document.getElementById('cardRise').classList.remove('risen');
+      const hint = document.getElementById('tapHint');
+      hint.style.opacity = '1'; hint.style.pointerEvents = 'auto';
+      isOpen = false;
+    }, 700);
+  }
+</script>
+</body>
+</html>
