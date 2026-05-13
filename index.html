@@ -570,22 +570,19 @@ body {
 <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Música">🎵</button>
 
 <audio id="bgMusic" loop>
-  <source src="sinos.mp3" type="audio/mpeg">
+  <source src="cancion.mp3" type="audio/mpeg">
 </audio>
 
-<script>
-document.addEventListener("click", () => {
-  const music = document.getElementById("bgMusic");
-  music.addEventListener("loadedmetadata", () => {
-    music.currentTime = 8;
-    music.play();
-  });
-  music.load();
-  setTimeout(() => {
-    document.getElementById('musicBtn').classList.add('visible');
-  }, 1500);
-}, { once: true });
-</script>
+  <script>
+    document.addEventListener("click", function() {
+      const music = document.getElementById('bgmusic');
+      music.addEventListener("loadedmetadata", function() {
+        music.currentTime = 8;
+        music.play();
+      });
+      music.load();
+    }, { once: true });
+  </script>
 
 <script>
   let isMuted = false;
