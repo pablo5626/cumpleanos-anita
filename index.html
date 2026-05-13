@@ -577,7 +577,7 @@ body {
     document.addEventListener("click", function() {
       const music = document.getElementById('bgMusic');
       music.addEventListener("loadedmetadata", function() {
-        music.currentTime = 0;
+        
         music.play();
       });
       music.load();
